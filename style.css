@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+header h1 {
+    width: 20%;
+}
+header div {
+    width: 80%;
+}
+
+header div button {
+    padding: 10px 15px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    color: rgb(83, 31, 31);
+}
