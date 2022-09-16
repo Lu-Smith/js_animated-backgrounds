@@ -34,3 +34,6 @@ function changeToOption4() {
 };
 
 //canvas1
+const canvas1 = document.getElementById('canvas1');
+const ctx1 = canvas1.getContex('2d');
+

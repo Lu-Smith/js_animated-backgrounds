@@ -29,16 +29,27 @@ header div button {
 main {
     width: 100vw;
     height: 90vh;
-    background-color: red;
 }
 
-.container {
-    background-color: black;
+.container1 {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.container2 {
+    background-color: rgb(146, 139, 139);
     width: 100%;
     height: 100%;
 }
 
 .container3 {
+    background-color: rgb(212, 62, 218);
+    width: 100%;
+    height: 100%;
+}
+
+.container4 {
     background-color: rgb(212, 62, 218);
     width: 100%;
     height: 100%;
@@ -52,11 +63,11 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: white;
+    color: black;
     transform: translate(-50%, 10%);
     font-size: 60px;
     white-space: nowrap;
-    border-top: 3px solid white;
+    border-top: 3px solid black;
 }
 
 #subtitle::before {
