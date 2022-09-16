@@ -51,7 +51,12 @@ class Particle1 {
         this.directionX = 1;
     }
     update(){
-        this. weight += 0.01;
+        if(this.y > canvas1.height) {
+            this.y = 0 - this.size;
+            this.weight = 2;
+            this.x = Math.random() * canvas1.width;
+        }
+        this. weight += 0.05;
         this.y += this.weight;
     }
     draw(){
