@@ -4,34 +4,57 @@ const option1 = document.getElementById("variant1");
 const option2 = document.getElementById("variant2");
 const option3 = document.getElementById("variant3");
 const option4 = document.getElementById("variant4");
+const button1 = document.getElementById("button1");
+const button2 = document.getElementById("button2");
+const button3 = document.getElementById("button3");
+const button4 = document.getElementById("button4");
 
-function changeToOption1() {
-        option1.classList.remove("unable");
-        option2.classList.add("unable");
-        option3.classList.add("unable");
-        option4.classList.add("unable");
-};
+button1.addEventListener('mouseover', function() {
+    option1.classList.remove("unable");
+    option2.classList.add("unable");
+    option3.classList.add("unable");
+    option4.classList.add("unable");
+    init1();
+    animate1();
+    canvas1.width = option1.offsetWidth;
+    canvas1.heigth = option1.offsetHeight;
+})
 
-function changeToOption2() {
+button2.addEventListener('mouseover', function() {
     option2.classList.remove("unable");
     option1.classList.add("unable");
     option3.classList.add("unable");
     option4.classList.add("unable");
-};
+    init2();
+    animate2();
+    canvas2.width = option2.offsetWidth;
+    canvas2.heigth = option2.offsetHeight;
+})
 
-function changeToOption3() {
+button3.addEventListener('mouseover', function() {
     option3.classList.remove("unable");
     option2.classList.add("unable");
     option1.classList.add("unable");
     option4.classList.add("unable");
-};
+    
+    canvas3.width = option3.offsetWidth;
+    canvas3.heigth = option3.offsetHeight;
+    init3();
+    animate3();
+})
 
-function changeToOption4() {
+button4.addEventListener('mouseover', function() {
     option4.classList.remove("unable");
     option2.classList.add("unable");
     option3.classList.add("unable");
     option1.classList.add("unable");
-};
+    init4();
+    animate4();
+    canvas4.width = option4.offsetWidth;
+    canvas4.heigth = option4.offsetHeight;
+})
+
+
 
 //subtitle
 
@@ -118,10 +141,9 @@ class ParticleSecond1 {
             particleArray1.push(new ParticleSecond1(x, y));
         }
     }
+    
     init1();
-
         
-
     function animate1() {
         ctx1.fillStyle = 'rgba(255, 255, 255, 0.1)';
         ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
@@ -129,25 +151,10 @@ class ParticleSecond1 {
             particleArray1[i].update();
             particleArray1[i].draw();
         }
-        requestAnimationFrame(animate1);
-        
+        requestAnimationFrame(animate1); 
     }
-
+     
     animate1();
-
-    window.addEventListener('resize', function(){
-        canvas1.width = option1.offsetWidth;
-        canvas1.heigth = option1.offsetHeight;
-        subtitleMeasurements = subtitle.getBoundingClientRect();
-        subtitleData = {
-            x: subtitleMeasurements.left,
-            y: 73,
-            width: subtitleMeasurements.width,
-            height: 0.5,
-        }
-        init1();
-    })
-
 
 //canvas2
 const canvas2 = document.getElementById('canvas2');
@@ -204,9 +211,6 @@ class Particle2 {
     }
 }
 
-
-
-
     function init2() {
         particleArray2 = [];
         for(let i = 0; i < numberOfParticles2; i++) {
@@ -215,9 +219,6 @@ class Particle2 {
             particleArray2.push(new Particle2(x, y));
         }
     }
-    init2();
-
-        
 
     function animate2() {
         ctx2.fillStyle = 'rgb(146, 139, 139, 0.05)';
@@ -226,11 +227,8 @@ class Particle2 {
             particleArray2[i].update();
             particleArray2[i].draw();
         }
-        requestAnimationFrame(animate2);
-        
+        requestAnimationFrame(animate2); 
     }
-
-    animate2();
 
     window.addEventListener('resize', function(){
         canvas2.width = option2.offsetWidth;
@@ -243,6 +241,7 @@ class Particle2 {
             height: 0.5,
         }
         init2();
+        animate2();
     })
 
 
@@ -343,9 +342,6 @@ class ParticleSecond3 {
             particleArray3.push(new ParticleSecond3(x, y));
         }
     }
-    init3();
-
-        
 
     function animate3() {
         ctx3.fillStyle = 'rgb(255, 132, 124, 0.05)';
@@ -359,8 +355,6 @@ class ParticleSecond3 {
         
     }
 
-    animate3();
-
     window.addEventListener('resize', function(){
         canvas3.width = option3.offsetWidth;
         canvas3.heigth = option3.offsetHeight;
@@ -373,6 +367,9 @@ class ParticleSecond3 {
         }
         init3();
     })
+
+  
+
 
 
 //canvas4
@@ -462,9 +459,6 @@ class ParticleSecond4 {
             particleArray4.push(new ParticleSecond4(x, y));
         }
     }
-    init4();
-
-        
 
     function animate4() {
         ctx4.fillStyle = 'rgb(187, 228, 223, 0.05)';
@@ -478,8 +472,6 @@ class ParticleSecond4 {
         
     }
 
-    animate4();
-
     window.addEventListener('resize', function(){
         canvas4.width = option4.offsetWidth;
         canvas4.heigth = option4.offsetHeight;
@@ -492,3 +484,6 @@ class ParticleSecond4 {
         }
         init4();
     })
+
+
+    
