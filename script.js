@@ -33,6 +33,7 @@ function changeToOption4() {
     option1.classList.add("unable");
 };
 
+
 //canvas1
 const canvas1 = document.getElementById('canvas1');
 const ctx1 = canvas1.getContext('2d');
@@ -40,13 +41,31 @@ const ctx1 = canvas1.getContext('2d');
 canvas1.width = option1.offsetWidth;
 canvas1.heigth = option1.offsetHeight;
 let particleArray1 = [];
-const numberOfParticles = 300;
+const numberOfParticles1 = 300;
+
+
+
+//subtitle
+
+let subtitle = document.getElementById('subtitle');
+let subtitleMeasurements = subtitle.getBoundingClientRect();
+console.log(subtitleMeasurements);
+let subtitleData = {
+    x: subtitleMeasurements.left,
+    y: 73,
+    width: subtitleMeasurements.width,
+    height: 0.5,
+}
+
+
+
+
 
 class Particle1 {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = Math.random() * 15 + 1;
+        this.size = Math.random() * 10 + 1;
         this.weight = Math.random() * 0.5 + 1;
         this.directionX = -2;
     }
@@ -59,6 +78,17 @@ class Particle1 {
         this. weight += 0.015;
         this.y += this.weight;
         this.x += this.directionX;
+
+        if (
+            this.x < subtitleData.x + subtitleData.width &&
+            this.x + this.size > subtitleData.x &&
+            this.y < subtitleData.y + subtitleData.height &&
+            this.y + this.size > subtitleData.y
+            )
+             {
+                this.y -= 5;
+                this.weight *= -0.6;
+            }
     }
     draw(){
         ctx1.fillStyle = 'orangered';
@@ -66,12 +96,11 @@ class Particle1 {
         ctx1.arc(this.x, this.y, this.size, 0, Math.PI *2);
         ctx1.closePath();
         ctx1.fill();
-        
     }
 }
 
     function init1() {
-        for(let i = 0; i < numberOfParticles; i++) {
+        for(let i = 0; i < numberOfParticles1; i++) {
             const x = Math.random() * canvas1.width;
             const y = Math.random() * canvas1.height;
             particleArray1.push(new Particle1(x, y));
@@ -79,16 +108,23 @@ class Particle1 {
     }
     init1();
 
+        
+
     function animate() {
-        ctx1.fillStyle = 'rgba(255, 255, 255, 0.03)';
+        ctx1.fillStyle = 'rgba(255, 255, 255, 0.05)';
         ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
         for (let i = 0; i < particleArray1.length; i++){
             particleArray1[i].update();
             particleArray1[i].draw();
-
         }
+        ctx1.fillRect(subtitleData.x, subtitleData.y, subtitleData.width, subtitleData.height);
         requestAnimationFrame(animate);
+        
     }
 
     animate();
 
+     console.log(subtitleData.width);
+     console.log(subtitleData.height);
+     console.log(subtitleData.x);
+     console.log(subtitleData.y);
