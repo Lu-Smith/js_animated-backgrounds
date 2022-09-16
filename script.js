@@ -267,3 +267,263 @@ class Particle2 {
         }
         init2();
     })
+
+
+//canvas3
+const canvas3 = document.getElementById('canvas3');
+const ctx3 = canvas3.getContext('2d');
+
+canvas3.width = option3.offsetWidth;
+canvas3.heigth = option3.offsetHeight;
+let particleArray3 = [];
+const numberOfParticles3 = 400;
+
+class Particle3 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 8 + 1;
+        this.weight = Math.random() * 0.5 + 1;
+        this.directionX = -2;
+    }
+    update(){
+        if(this.y > canvas3.height) {
+            this.y = 0 - this.size;
+            this.weight = Math.random() * 0.5 + 1;
+            this.x = Math.random() * canvas3.width * 1.3;
+        }
+        this. weight += 0.015;
+        this.y += this.weight;
+        this.x += this.directionX;
+
+        if (
+            this.x < subtitleData.x + subtitleData.width &&
+            this.x + this.size > subtitleData.x &&
+            this.y < subtitleData.y + subtitleData.height &&
+            this.y + this.size > subtitleData.y
+            )
+             {
+                this.y -= 1;
+                this.weight *= -0.4;
+                this.size = Math.random() * 2 + 1;
+            }
+    }
+    draw(){
+        ctx3.fillStyle = '#ffcbcb';
+        ctx3.beginPath();
+        ctx3.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx3.closePath();
+        ctx3.fill();
+    }
+}
+
+
+class ParticleSecond3 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 8 + 1;
+        this.weight = Math.random() * 0.5 + 1;
+        this.directionX = 2;
+    }
+    update(){
+        if(this.y > canvas3.height) {
+            this.y = 0 - this.size;
+            this.weight = Math.random() * 0.5 + 1;
+            this.x = Math.random() * canvas3.width * 1.3;
+        }
+        this. weight += 0.015;
+        this.y += this.weight;
+        this.x += this.directionX;
+
+        if (
+            this.x < subtitleData.x + subtitleData.width &&
+            this.x + this.size > subtitleData.x &&
+            this.y < subtitleData.y + subtitleData.height &&
+            this.y + this.size > subtitleData.y
+            )
+             {
+                this.y -= 1;
+                this.weight *= -0.4;
+                this.size = Math.random() * 2 + 1;
+            }
+    }
+    draw(){
+        ctx3.fillStyle = '#ffb5b5';
+        ctx3.beginPath();
+        ctx3.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx3.closePath();
+        ctx3.fill();
+    }
+}
+
+    function init3() {
+        particleArray3 = [];
+        for(let i = 0; i < numberOfParticles3; i++) {
+            const x = Math.random() * canvas3.width;
+            const y = Math.random() * canvas3.height;
+            particleArray3.push(new Particle3(x, y));
+            particleArray3.push(new ParticleSecond3(x, y));
+        }
+    }
+    init3();
+
+        
+
+    function animate3() {
+        ctx3.fillStyle = 'rgb(212, 62, 218, 0.05)';
+        ctx3.fillRect(0, 0, canvas3.width, canvas3.height);
+        for (let i = 0; i < particleArray3.length; i++){
+            particleArray3[i].update();
+            particleArray3[i].draw();
+        }
+        ctx3.fillRect(subtitleData.x, subtitleData.y, subtitleData.width, subtitleData.height);
+        requestAnimationFrame(animate3);
+        
+    }
+
+    animate3();
+
+    window.addEventListener('resize', function(){
+        canvas3.width = option3.offsetWidth;
+        canvas3.heigth = option3.offsetHeight;
+        subtitleMeasurements = subtitle.getBoundingClientRect();
+        subtitleData = {
+            x: subtitleMeasurements.left,
+            y: 73,
+            width: subtitleMeasurements.width,
+            height: 0.5,
+        }
+        init3();
+    })
+
+
+//canvas4
+const canvas4 = document.getElementById('canvas4');
+const ctx4 = canvas4.getContext('2d');
+
+canvas4.width = option4.offsetWidth;
+canvas4.heigth = option4.offsetHeight;
+let particleArray4 = [];
+const numberOfParticles4 = 400;
+
+
+
+class Particle4 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 8 + 1;
+        this.weight = Math.random() * 0.5 + 1;
+        this.directionX = -2;
+    }
+    update(){
+        if(this.y > canvas4.height) {
+            this.y = 0 - this.size;
+            this.weight = Math.random() * 0.5 + 1;
+            this.x = Math.random() * canvas4.width * 1.3;
+        }
+        this. weight += 0.015;
+        this.y += this.weight;
+        this.x += this.directionX;
+
+        if (
+            this.x < subtitleData.x + subtitleData.width &&
+            this.x + this.size > subtitleData.x &&
+            this.y < subtitleData.y + subtitleData.height &&
+            this.y + this.size > subtitleData.y
+            )
+             {
+                this.y -= 1;
+                this.weight *= -0.4;
+                this.size = Math.random() * 2 + 1;
+            }
+    }
+    draw(){
+        ctx4.strokeStyle = 'white';
+        ctx4.beginPath();
+        ctx4.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx4.closePath();
+        ctx4.stroke();
+    }
+}
+
+
+class ParticleSecond4 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 8 + 1;
+        this.weight = Math.random() * 0.5 + 1;
+        this.directionX = 2;
+    }
+    update(){
+        if(this.y > canvas4.height) {
+            this.y = 0 - this.size;
+            this.weight = Math.random() * 0.5 + 1;
+            this.x = Math.random() * canvas4.width * 1.3;
+        }
+        this. weight += 0.015;
+        this.y += this.weight;
+        this.x += this.directionX;
+
+        if (
+            this.x < subtitleData.x + subtitleData.width &&
+            this.x + this.size > subtitleData.x &&
+            this.y < subtitleData.y + subtitleData.height &&
+            this.y + this.size > subtitleData.y
+            )
+             {
+                this.y -= 1;
+                this.weight *= -0.4;
+                this.size = Math.random() * 2 + 1;
+            }
+    }
+    draw(){
+        ctx4.strokeStyle = 'black';
+        ctx4.beginPath();
+        ctx4.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx4.closePath();
+        ctx4.stroke();
+    }
+}
+
+    function init4() {
+        particleArray4 = [];
+        for(let i = 0; i < numberOfParticles4; i++) {
+            const x = Math.random() * canvas4.width;
+            const y = Math.random() * canvas4.height;
+            particleArray4.push(new Particle4(x, y));
+            particleArray4.push(new ParticleSecond4(x, y));
+        }
+    }
+    init4();
+
+        
+
+    function animate4() {
+        ctx4.fillStyle = 'rgb(62, 143, 218, 0.05)';
+        ctx4.fillRect(0, 0, canvas4.width, canvas4.height);
+        for (let i = 0; i < particleArray4.length; i++){
+            particleArray4[i].update();
+            particleArray4[i].draw();
+        }
+        ctx4.fillRect(subtitleData.x, subtitleData.y, subtitleData.width, subtitleData.height);
+        requestAnimationFrame(animate4);
+        
+    }
+
+    animate4();
+
+    window.addEventListener('resize', function(){
+        canvas4.width = option4.offsetWidth;
+        canvas4.heigth = option4.offsetHeight;
+        subtitleMeasurements = subtitle.getBoundingClientRect();
+        subtitleData = {
+            x: subtitleMeasurements.left,
+            y: 74,
+            width: subtitleMeasurements.width,
+            height: 0.5,
+        }
+        init4();
+    })
