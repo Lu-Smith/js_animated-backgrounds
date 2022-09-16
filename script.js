@@ -46,22 +46,22 @@ class Particle1 {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 10;
-        this.weight = 0.4;
-        this.directionX = -1;
+        this.size = Math.random() * 15 + 1;
+        this.weight = Math.random() * 0.5 + 1;
+        this.directionX = -2;
     }
     update(){
         if(this.y > canvas1.height) {
             this.y = 0 - this.size;
-            this.weight = 0.4;
-            this.x = Math.random() * canvas1.width;
+            this.weight = Math.random() * 0.5 + 1;
+            this.x = Math.random() * canvas1.width * 1.3;
         }
         this. weight += 0.015;
         this.y += this.weight;
         this.x += this.directionX;
     }
     draw(){
-        ctx1.fillStyle = 'red';
+        ctx1.fillStyle = 'orangered';
         ctx1.beginPath();
         ctx1.arc(this.x, this.y, this.size, 0, Math.PI *2);
         ctx1.closePath();
@@ -80,7 +80,7 @@ class Particle1 {
     init1();
 
     function animate() {
-        ctx1.fillStyle = 'rgba(255, 255, 255, 0.01)';
+        ctx1.fillStyle = 'rgba(255, 255, 255, 0.03)';
         ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
         for (let i = 0; i < particleArray1.length; i++){
             particleArray1[i].update();
