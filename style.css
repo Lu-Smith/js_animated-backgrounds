@@ -48,6 +48,27 @@ main {
     display: none;
 }
 
+#subtitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, 10%);
+    font-size: 60px;
+    white-space: nowrap;
+    border-top: 3px solid white;
+}
+
+#subtitle::before {
+    content: 'Good Vibes';
+    position: absolute;
+    bottom: -40px;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
 footer {
     padding: 10px 0;
 }
