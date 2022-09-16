@@ -35,5 +35,40 @@ function changeToOption4() {
 
 //canvas1
 const canvas1 = document.getElementById('canvas1');
-const ctx1 = canvas1.getContex('2d');
+const ctx1 = canvas1.getContext('2d');
+
+canvas1.width = option1.offsetWidth;
+canvas1.heigth = option1.offsetHeight;
+let particleArray1 = [];
+
+class Particle1 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = 10;
+        this.weight = 2;
+        this.directionX = 1;
+    }
+    update(){
+        this. weight += 0.01;
+        this.y += this.weight;
+    }
+    draw(){
+        ctx1.fillStyle = 'red';
+        ctx1.beginPath();
+        ctx1.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx1.closePath();
+        ctx1.fill();
+    }
+}
+
+    const particle1 = new Particle1(30, 10);
+
+    function animate() {
+        particle1.update();
+        particle1.draw();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 
