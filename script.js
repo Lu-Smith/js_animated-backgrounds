@@ -62,7 +62,7 @@ let subtitle = document.getElementById('subtitle');
 let subtitleMeasurements = subtitle.getBoundingClientRect();
 let subtitleData = {
     x: subtitleMeasurements.left,
-    y: 73,
+    y: 76,
     width: subtitleMeasurements.width,
     height: 0.5,
 }
@@ -82,16 +82,16 @@ class Particle1 {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 8 + 1;
-        this.weight = Math.random() * 5 + 1;
+        this.weight = Math.random() * 0.5 + 1;
         this.directionY = -1;
     }
     update(){
         if(this.y > canvas1.height) {
             this.y = 0 - this.size;
-            this.weight = Math.random() * 5 + 1;
+            this.weight = Math.random() * 0.5 + 1;
             this.x = Math.random() * canvas1.width * 1.3;
         }
-        this. weight += 0.15;
+        this. weight += 0.015;
         this.y += this.weight * 0.02;
         this.x += this.directionY;
     }
@@ -110,16 +110,16 @@ class ParticleSecond1 {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 8 + 1;
-        this.weight = 0.008;
+        this.weight = 0.0008;
         this.directionX = 2;
     }
     update(){
         if(this.x > canvas1.width) {
             this.x = Math.random() * canvas1.width;
-            this.weight = 0.008;
+            this.weight = 0.0008;
             this.y = 0 - this.size;
         }
-        this. weight += 0.0015;
+        this. weight += 0.00015;
         this.x += this.weight;
         this.y += this.directionX;
     }
@@ -170,16 +170,16 @@ class Particle2 {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 30 + 1;
-        this.weight = Math.random() * 9 + 1;
-        this.directionY = 20;
+        this.weight = Math.random() * 0.05 + 1;
+        this.directionY = 7;
     }
     update(){
         if(this.y > canvas2.height) {
             this.y = 0 - this.size;
-            this.weight = Math.random() * 9 + 1;
-            this.x = Math.random() * canvas2.width * 1.3;
+            this.weight = Math.random() * 0.05 + 1;
+            this.x = Math.random() * canvas2.width - 200;
         }
-        this. weight += 0.15;
+        this. weight += 0.015;
         this.y += this.weight * 0.25;
         this.x += this.directionY;
 
@@ -197,17 +197,17 @@ class Particle2 {
     }
     draw(){
         if (this.size < 2) {
-            ctx2.fillStyle = 'black';
+            ctx2.fillStyle = '#596e79';
         } else if (this.size > 20) {
-            ctx2.fillStyle = 'black';
+            ctx2.fillStyle = '#596e79';
         } else {
             ctx2.fillStyle = 'white';
         }
         
         ctx2.beginPath();
         ctx2.arc(this.x, this.y, this.size, 0, Math.PI *2);
-        ctx2.closePath();
         ctx2.fill();
+        ctx2.closePath();
     }
 }
 
@@ -221,7 +221,7 @@ class Particle2 {
     }
 
     function animate2() {
-        ctx2.fillStyle = 'rgb(146, 139, 139, 0.05)';
+        ctx2.fillStyle = 'rgb(146, 139, 139, 0.8)';
         ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
         for (let i = 0; i < particleArray2.length; i++){
             particleArray2[i].update();
@@ -388,16 +388,16 @@ class Particle4 {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 4 + 1;
-        this.weight = Math.random() * 1.5 + 1;
+        this.weight = Math.random() * 0.05 + 1;
         this.directionX = -2;
     }
     update(){
         if(this.y > canvas4.height) {
             this.y = 0 - this.size;
-            this.weight = Math.random() * 0.5 + 1;
+            this.weight = Math.random() * 0.05 + 1;
             this.x = Math.random() * canvas4.width * 1.3;
         }
-        this. weight += 0.015;
+        this. weight += 0.0015;
         this.y += this.weight;
         this.x += this.directionX;
 
@@ -437,7 +437,7 @@ class ParticleSecond4 {
             this.weight = Math.random() * 0.5 + 1;
             this.x = Math.random() * canvas4.width * 1.3 - 150;
         }
-        this. weight += 0.015;
+        this. weight += 0.0015;
         this.y += this.weight;
         this.x += this.directionX;
     }
@@ -467,7 +467,6 @@ class ParticleSecond4 {
             particleArray4[i].update();
             particleArray4[i].draw();
         }
-        ctx4.fillRect(subtitleData.x, subtitleData.y, subtitleData.width, subtitleData.height);
         requestAnimationFrame(animate4);
         
     }
