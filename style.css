@@ -50,7 +50,12 @@ main {
 }
 
 .container4 {
-    background-color: rgb(124, 185, 241);
+    background-color: rgb(62, 143, 218);
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
     width: 100%;
     height: 100%;
 }
