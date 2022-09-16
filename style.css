@@ -11,24 +11,35 @@ body {
 header {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
     margin: 10px;
-}
-header h1 {
-    width: 20%;
-}
-header div {
-    width: 80%;
+    background: transparent;
+    z-index: 999;;
 }
 
-header div button {
-    padding: 10px 15px;
+header button {
+    padding: 20px 30px;
     border-radius: 50%;
     margin: 0 5px;
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #7fa99b;
+    border: none;
+}
+
+header button:hover {
+    background: #f0ece2;
 }
 
 main {
+    position: absolute;
+    top: 0;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
+    z-index: -1;
 }
 
 .container1 {
@@ -44,7 +55,7 @@ main {
 }
 
 .container3 {
-    background-color: rgb(212, 62, 218);
+    background-color: #ff847c;
     width: 100%;
     height: 100%;
 }
@@ -87,6 +98,10 @@ canvas {
 
 footer {
     padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px 30px;
 }
 
 footer a {

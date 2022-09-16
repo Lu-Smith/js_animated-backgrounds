@@ -101,7 +101,7 @@ class ParticleSecond1 {
         this.y += this.directionX;
     }
     draw(){
-        ctx1.fillStyle = 'red';
+        ctx1.fillStyle = '#a7bcb9';
         ctx1.beginPath();
         ctx1.arc(this.x, this.y, this.size * 18, 0, Math.PI * 2);
         ctx1.fill();
@@ -348,7 +348,7 @@ class ParticleSecond3 {
         
 
     function animate3() {
-        ctx3.fillStyle = 'rgb(212, 62, 218, 0.05)';
+        ctx3.fillStyle = 'rgb(255, 132, 124, 0.05)';
         ctx3.fillRect(0, 0, canvas3.width, canvas3.height);
         for (let i = 0; i < particleArray3.length; i++){
             particleArray3[i].update();
