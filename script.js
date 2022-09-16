@@ -41,6 +41,7 @@ canvas1.width = option1.offsetWidth;
 canvas1.heigth = option1.offsetHeight;
 let particleArray1 = [];
 
+
 class Particle1 {
     constructor(x, y) {
         this.x = x;
@@ -59,12 +60,15 @@ class Particle1 {
         ctx1.arc(this.x, this.y, this.size, 0, Math.PI *2);
         ctx1.closePath();
         ctx1.fill();
+        
     }
 }
 
-    const particle1 = new Particle1(30, 10);
+    const particle1 = new Particle1(100, 10);
 
     function animate() {
+        ctx1.fillStyle = 'rgba(255, 255, 255, 0.01)';
+        ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
         particle1.update();
         particle1.draw();
         requestAnimationFrame(animate);
