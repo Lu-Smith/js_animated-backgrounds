@@ -86,8 +86,8 @@ class Particle1 {
             this.y + this.size > subtitleData.y
             )
              {
-                this.y -= 5;
-                this.weight *= -0.6;
+                this.y -= 2;
+                this.weight *= -0.2;
             }
     }
     draw(){
@@ -100,6 +100,7 @@ class Particle1 {
 }
 
     function init1() {
+        particleArray1 = [];
         for(let i = 0; i < numberOfParticles1; i++) {
             const x = Math.random() * canvas1.width;
             const y = Math.random() * canvas1.height;
@@ -124,7 +125,15 @@ class Particle1 {
 
     animate();
 
-     console.log(subtitleData.width);
-     console.log(subtitleData.height);
-     console.log(subtitleData.x);
-     console.log(subtitleData.y);
+    window.addEventListener('resize', function(){
+        canvas1.width = option1.offsetWidth;
+        canvas1.heigth = option1.offsetHeight;
+        subtitleMeasurements = subtitle.getBoundingClientRect();
+        subtitleData = {
+            x: subtitleMeasurements.left,
+            y: 73,
+            width: subtitleMeasurements.width,
+            height: 0.5,
+        }
+        init1();
+    })
