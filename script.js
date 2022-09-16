@@ -47,17 +47,18 @@ class Particle1 {
         this.x = x;
         this.y = y;
         this.size = 10;
-        this.weight = 2;
-        this.directionX = 1;
+        this.weight = 4;
+        this.directionX = -1;
     }
     update(){
         if(this.y > canvas1.height) {
             this.y = 0 - this.size;
-            this.weight = 2;
+            this.weight = 1;
             this.x = Math.random() * canvas1.width;
         }
         this. weight += 0.05;
         this.y += this.weight;
+        this.x += this.directionX;
     }
     draw(){
         ctx1.fillStyle = 'red';
@@ -70,12 +71,15 @@ class Particle1 {
 }
 
     const particle1 = new Particle1(100, 10);
+    const particle2 = new Particle1(200, 50);
 
     function animate() {
         ctx1.fillStyle = 'rgba(255, 255, 255, 0.01)';
         ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
         particle1.update();
         particle1.draw();
+        particle2.update();
+        particle2.draw();
         requestAnimationFrame(animate);
     }
 
